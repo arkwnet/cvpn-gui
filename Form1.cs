@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+cvpn-gui
+GUI frontend for szpp-dev-team/cvpn
+
+(c) 2021 Sora Arakawa all rights reserved.
+*/
+
+using System;
 using System.IO;
 using System.Windows.Forms;
 using System.Diagnostics;
