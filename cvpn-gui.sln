@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30002.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cvpn-gui", "cvpn-gui.csproj", "{B366CC58-D9CC-4426-8DB0-B3B55623AD5A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B366CC58-D9CC-4426-8DB0-B3B55623AD5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B366CC58-D9CC-4426-8DB0-B3B55623AD5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B366CC58-D9CC-4426-8DB0-B3B55623AD5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B366CC58-D9CC-4426-8DB0-B3B55623AD5A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2E1F3AFC-4331-4C48-85B1-32CC8652FCA7}
+	EndGlobalSection
+EndGlobal
