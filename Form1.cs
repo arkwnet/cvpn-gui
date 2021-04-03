@@ -17,6 +17,7 @@ namespace cvpn_gui
 	public partial class Form1 : Form
 	{
 		string AppName = "cvpn-gui";
+		string path = "/";
 
 		public Form1()
 		{
@@ -37,9 +38,10 @@ namespace cvpn_gui
 
 		private void Form1_Shown(object sender, EventArgs e)
 		{
-			AddList(VPNGetList("/"));
+			AddList(VPNGetList(path));
 		}
 
+		
 		private string VPNGetList(string path)
 		{
 			this.Text = path + " の一覧を取得中...  - "+AppName;
@@ -57,9 +59,10 @@ namespace cvpn_gui
 			this.Text = AppName;
 			return output;
 		}
-
+		
 		private void AddList(string data)
 		{
+			dataGridView1.Rows.Clear();
 			StringReader rs = new StringReader(data);
 			while (rs.Peek() > -1)
 			{
@@ -68,7 +71,12 @@ namespace cvpn_gui
 				{
 					dataGridView1.Rows.Add(CreateFileName(arr, 7), "フォルダ", arr[0], arr[1] + " " + arr[2] + " " + arr[3] + " " + arr[4] + " " + arr[5]);
 				} else if (arr[0] != "") {
-					dataGridView1.Rows.Add(CreateFileName(arr, 8), "ファイル", arr[0] + " "+ arr[1], arr[2] + " " + arr[3] + " " + arr[4] + " " + arr[5] + " " + arr[6]);
+					if (arr[0].Contains("[") == true)
+					{
+						dataGridView1.Rows.Add(CreateFileName(arr, 7), "ファイル", arr[0], arr[1] + " " + arr[2] + " " + arr[3] + " " + arr[4] + " " + arr[5]);
+					} else {
+						dataGridView1.Rows.Add(CreateFileName(arr, 8), "ファイル", arr[0] + arr[1], arr[2] + " " + arr[3] + " " + arr[4] + " " + arr[5] + " " + arr[6]);
+					}
 				}
 				
 			}
@@ -87,6 +95,15 @@ namespace cvpn_gui
 				}
 			}
 			return fn;
+		}
+
+		private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+		{
+			if (dataGridView1.CurrentRow.Cells[1].Value == "フォルダ")
+			{
+				path = path + dataGridView1.CurrentRow.Cells[0].Value + "/";
+				AddList(VPNGetList(path));
+			}
 		}
 	}
 }
