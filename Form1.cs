@@ -10,6 +10,7 @@ using System.IO;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Text;
+using System.Xml;
 
 namespace cvpn_gui
 {
@@ -41,23 +42,36 @@ namespace cvpn_gui
 			AddList(VPNGetList(path));
 		}
 
-		
-		private string VPNGetList(string path)
+		private string VPNProcess(string args)
 		{
-			this.Text = path + " の一覧を取得中...  - "+AppName;
 			string command = Directory.GetCurrentDirectory() + "\\cvpn.exe";
 			ProcessStartInfo psInfo = new ProcessStartInfo();
 			psInfo.FileName = command;
 			psInfo.CreateNoWindow = true;
 			psInfo.UseShellExecute = false;
 			psInfo.RedirectStandardOutput = true;
-			psInfo.Arguments = "ls "+path;
+			psInfo.Arguments = args;
 			psInfo.StandardOutputEncoding = Encoding.UTF8;
 			Process p = Process.Start(psInfo);
 			string output = p.StandardOutput.ReadToEnd();
 			output = output.Replace("\r\r\n", "\n");
+			return output;
+		}
+
+		
+		private string VPNGetList(string path)
+		{
+			this.Text = path + " の一覧を取得中...  - "+AppName;
+			string output = VPNProcess("ls " + path);
 			this.Text = AppName;
 			return output;
+		}
+
+		private void VPNDownload(string path)
+		{
+			this.Text = path + " をダウンロード中...  - " + AppName;
+			VPNProcess("download " + path + " -o ./");
+			this.Text = AppName;
 		}
 		
 		private void AddList(string data)
@@ -99,10 +113,16 @@ namespace cvpn_gui
 
 		private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
 		{
-			if (dataGridView1.CurrentRow.Cells[1].Value == "フォルダ")
+			if (dataGridView1.CurrentRow.Cells[1].Value.Equals("フォルダ"))
 			{
 				path = path + dataGridView1.CurrentRow.Cells[0].Value + "/";
 				AddList(VPNGetList(path));
+				return;
+			}
+			if (dataGridView1.CurrentRow.Cells[1].Value.Equals("ファイル"))
+			{
+				VPNDownload(path + dataGridView1.CurrentRow.Cells[0].Value);
+				return;
 			}
 		}
 	}
