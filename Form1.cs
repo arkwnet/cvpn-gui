@@ -10,14 +10,12 @@ using System.IO;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Text;
-using System.Xml;
 
 namespace cvpn_gui
 {
 
 	public partial class Form1 : Form
 	{
-		string AppName = "cvpn-gui";
 		string path = "/";
 
 		public Form1()
@@ -27,7 +25,6 @@ namespace cvpn_gui
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
-			this.Text = AppName;
 			dataGridView1.ColumnCount = 4;
 			dataGridView1.Columns[0].HeaderText = "名前";
 			dataGridView1.Columns[1].HeaderText = "種類";
@@ -61,17 +58,17 @@ namespace cvpn_gui
 		
 		private string VPNGetList(string path)
 		{
-			this.Text = path + " の一覧を取得中...  - "+AppName;
+			toolStripStatusLabel1.Text = path + " の一覧を取得中...";
 			string output = VPNProcess("ls " + path);
-			this.Text = AppName;
+			toolStripStatusLabel1.Text = path + " の一覧を取得しました。";
 			return output;
 		}
 
 		private void VPNDownload(string path)
 		{
-			this.Text = path + " をダウンロード中...  - " + AppName;
+			toolStripStatusLabel1.Text = path + " をダウンロード中...";
 			VPNProcess("download " + path + " -o ./");
-			this.Text = AppName;
+			toolStripStatusLabel1.Text = path + " をダウンロードしました..."; ;
 		}
 		
 		private void AddList(string data)
