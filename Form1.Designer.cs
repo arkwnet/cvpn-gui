@@ -28,11 +28,12 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
-			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-			this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+			this.toolStrip = new System.Windows.Forms.ToolStrip();
+			this.backButton = new System.Windows.Forms.ToolStripButton();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-			this.statusStrip1.SuspendLayout();
+			this.toolStrip.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// dataGridView1
@@ -42,29 +43,34 @@
 			this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
 			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+			this.dataGridView1.Location = new System.Drawing.Point(0, 25);
 			this.dataGridView1.MultiSelect = false;
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.ReadOnly = true;
 			this.dataGridView1.RowTemplate.Height = 21;
-			this.dataGridView1.Size = new System.Drawing.Size(784, 419);
+			this.dataGridView1.Size = new System.Drawing.Size(784, 416);
 			this.dataGridView1.TabIndex = 0;
 			this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
 			// 
-			// statusStrip1
+			// toolStrip
 			// 
-			this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
-			this.statusStrip1.Location = new System.Drawing.Point(0, 419);
-			this.statusStrip1.Name = "statusStrip1";
-			this.statusStrip1.Size = new System.Drawing.Size(784, 22);
-			this.statusStrip1.TabIndex = 1;
-			this.statusStrip1.Text = "statusStrip1";
+			this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.backButton});
+			this.toolStrip.Location = new System.Drawing.Point(0, 0);
+			this.toolStrip.Name = "toolStrip";
+			this.toolStrip.Size = new System.Drawing.Size(784, 25);
+			this.toolStrip.TabIndex = 1;
+			this.toolStrip.Text = "toolStrip1";
 			// 
-			// toolStripStatusLabel1
+			// backButton
 			// 
-			this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-			this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
+			this.backButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.backButton.Image = ((System.Drawing.Image)(resources.GetObject("backButton.Image")));
+			this.backButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.backButton.Name = "backButton";
+			this.backButton.Size = new System.Drawing.Size(23, 22);
+			this.backButton.Text = "戻る";
+			this.backButton.Click += new System.EventHandler(this.backButton_Click);
 			// 
 			// Form1
 			// 
@@ -72,14 +78,14 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(784, 441);
 			this.Controls.Add(this.dataGridView1);
-			this.Controls.Add(this.statusStrip1);
+			this.Controls.Add(this.toolStrip);
 			this.Name = "Form1";
 			this.Text = "cvpn-gui";
 			this.Load += new System.EventHandler(this.Form1_Load);
 			this.Shown += new System.EventHandler(this.Form1_Shown);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-			this.statusStrip1.ResumeLayout(false);
-			this.statusStrip1.PerformLayout();
+			this.toolStrip.ResumeLayout(false);
+			this.toolStrip.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -88,8 +94,8 @@
 		#endregion
 
 		private System.Windows.Forms.DataGridView dataGridView1;
-		private System.Windows.Forms.StatusStrip statusStrip1;
-		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+		private System.Windows.Forms.ToolStrip toolStrip;
+		private System.Windows.Forms.ToolStripButton backButton;
 	}
 }
 

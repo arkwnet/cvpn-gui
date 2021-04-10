@@ -16,6 +16,7 @@ namespace cvpn_gui
 
 	public partial class Form1 : Form
 	{
+		string AppName = "cvpn-gui";
 		string path = "/";
 
 		public Form1()
@@ -32,6 +33,7 @@ namespace cvpn_gui
 			dataGridView1.Columns[3].HeaderText = "更新日時";
 			dataGridView1.Columns[0].Width = 300;
 			dataGridView1.Columns[3].Width = 200;
+			backButton.Enabled = false;
 		}
 
 		private void Form1_Shown(object sender, EventArgs e)
@@ -58,17 +60,17 @@ namespace cvpn_gui
 		
 		private string VPNGetList(string path)
 		{
-			toolStripStatusLabel1.Text = path + " の一覧を取得中...";
+			Text = path + " の一覧を取得中...  - "+AppName;
 			string output = VPNProcess("ls " + path);
-			toolStripStatusLabel1.Text = path + " の一覧を取得しました。";
+			Text = path + " の一覧を取得しました。  - " + AppName;
 			return output;
 		}
 
 		private void VPNDownload(string path)
 		{
-			toolStripStatusLabel1.Text = path + " をダウンロード中...";
+			Text = path + " をダウンロード中...  - " + AppName;
 			VPNProcess("download " + path + " -o ./");
-			toolStripStatusLabel1.Text = path + " をダウンロードしました..."; ;
+			Text = path + " をダウンロードしました。  - " + AppName;
 		}
 		
 		private void AddList(string data)
@@ -90,6 +92,12 @@ namespace cvpn_gui
 					}
 				}
 				
+			}
+			if (path != "/")
+			{
+				backButton.Enabled = true;
+			} else {
+				backButton.Enabled = false;
 			}
 		}
 
@@ -121,6 +129,17 @@ namespace cvpn_gui
 				VPNDownload(path + dataGridView1.CurrentRow.Cells[0].Value);
 				return;
 			}
+		}
+
+		private void backButton_Click(object sender, EventArgs e)
+		{
+			string[] splitPath = path.Split('/');
+			path = "/";
+			for (int i = 1; i < splitPath.Length-2; i++)
+			{
+				path = path + splitPath[i] + "/";
+			}
+			AddList(VPNGetList(path));
 		}
 	}
 }
