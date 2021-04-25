@@ -1,6 +1,6 @@
 ﻿namespace cvpn_gui
 {
-	partial class Form1
+	partial class MainForm
 	{
 		/// <summary>
 		/// 必要なデザイナー変数です。
@@ -28,7 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
 			this.toolStrip = new System.Windows.Forms.ToolStrip();
 			this.backButton = new System.Windows.Forms.ToolStripButton();

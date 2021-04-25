@@ -14,12 +14,12 @@ using System.Text;
 namespace cvpn_gui
 {
 
-	public partial class Form1 : Form
+	public partial class MainForm : Form
 	{
 		string AppName = "cvpn-gui";
 		string path = "/";
 
-		public Form1()
+		public MainForm()
 		{
 			InitializeComponent();
 		}
