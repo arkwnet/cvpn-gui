@@ -3,6 +3,7 @@ cvpn-gui
 GUI frontend for szpp-dev-team/cvpn
 
 (c) 2021 Sora Arakawa all rights reserved.
+Licensed under the MIT License
 */
 
 using System;
@@ -75,6 +76,7 @@ namespace cvpn_gui
 		
 		private void AddList(string data)
 		{
+			dataGridView1.Enabled = false;
 			dataGridView1.Rows.Clear();
 			StringReader rs = new StringReader(data);
 			while (rs.Peek() > -1)
@@ -99,6 +101,7 @@ namespace cvpn_gui
 			} else {
 				backButton.Enabled = false;
 			}
+			dataGridView1.Enabled = true;
 		}
 
 		private string CreateFileName(string[] arr, int i)
